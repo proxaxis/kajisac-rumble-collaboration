@@ -10,5 +10,5 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - "4321:8000"
+      - "8000:8000"
     command: sleep infinity
