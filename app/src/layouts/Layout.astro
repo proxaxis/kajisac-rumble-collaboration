@@ -1,8 +1,6 @@
 ---
-import '@/styles/bootstrap.min.css';
-import '@/styles/animate.min.css';
-import '@/styles/ionicons.min.css';
-import '@/styles/styles.css';
+import '@/styles/global.scss';
+import ToggleThemeButton from '@/components/ToggleThemeButton.vue';
 ---
 
 <!doctype html>
@@ -17,94 +15,115 @@ import '@/styles/styles.css';
     <title>PANMry Works: Make the world tremendous</title>
   </head>
   <body>
-    <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand page-scroll" href="/">
-            <span class="nav-brand-split nav-brand-top">PANMry</span>
-            <span class="nav-brand-split nav-brand-bottom">Works</span>
-          </a>
-        </div>
-        <div class="navbar-collapse collapse" id="bs-navbar">
-          <ul class="nav navbar-nav">
+    <div class="app">
+      <header class="app-header">
+        <nav>
+          <ul>
             <li>
-              <a class="page-scroll" href="#one">intro</a>
+              <a href="/" class="brand">PANMry Works</a>
             </li>
             <li>
-              <a class="page-scroll" href="#two">highlights</a>
+              <a href="/#one">intro</a>
             </li>
             <li>
-              <a class="page-scroll" href="/gallery">Gallery</a>
+              <a href="/#two">highlights</a>
             </li>
             <li>
-              <a class="page-scroll" href="/shop">Shop</a>
+              <a href="/gallery">Gallery</a>
+            </li>
+            <li>
+              <a href="/shop">Shop</a>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul>
             <li>
-              <a class="page-scroll" href="/about">About</a>
+              <a href="/about">About</a>
+            </li>
+            <li class="toggle-theme-button">
+              <ToggleThemeButton client:load />
             </li>
           </ul>
-        </div>
-      </div>
-    </nav>
+        </nav>
+      </header>
 
-    <slot />
+      <slot />
 
-    <footer id="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-6 col-sm-4 column">
-            <h4>Information</h4>
-            <ul class="list-unstyled">
-              <li><a href="/about#developpers">Developers</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-6 col-sm-4 column">
-            <h4>About</h4>
-            <ul class="list-unstyled">
-              <li><a href="/about#contact">Contact Us</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-12 col-sm-4 column">
-            <h4>Follow</h4>
-            <ul class="list-inline">
-              <li>
-                <a rel="nofollow" href="#" title="Twitter"><i class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;
-              </li>
-              <li>
-                <a rel="nofollow" href="#" title="Facebook"><i class="icon-lg ion-social-facebook-outline"></i></a>&nbsp;
-              </li>
-              <li>
-                <a rel="nofollow" href="#" title="Dribble"><i class="icon-lg ion-social-dribbble-outline"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <br />
-        <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">Landing Zero by BootstrapZero</a> ©2015 Company</span>
-      </div>
-    </footer>
-
-    <script src="../scripts/jquery.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery.easing.min.js"></script>
-    <script src="../scripts/wow.js"></script>
-    <script src="../scripts/scripts.js"></script>
+      <footer class="app-footer">
+        <p><a href="http://www.bootstrapzero.com">Landing Zero by BootstrapZero</a> ©2015 Company</p>
+      </footer>
+    </div>
   </body>
 </html>
 
-<style>
-  html,
-  body {
-    /* margin: 0;
-    width: 100%;
-    height: 100%; */
+<style lang="scss">
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  .app-header {
+    position: relative;
+    height: var(--app-header-height);
+    background-color: var(--bg-1);
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--bg-1);
+      height: var(--app-header-height);
+      z-index: 1000;
+
+      ul {
+        display: flex;
+
+        li {
+          display: flex;
+          align-items: center;
+
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 1rem;
+            text-transform: uppercase;
+
+            &:hover {
+              color: var(--accent);
+            }
+
+            &.brand {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: var(--accent);
+              text-transform: none;
+            }
+          }
+
+          &.toggle-theme-button {
+              padding: 1rem 1rem 1rem 1rem;
+            }
+        }
+      }
+    }
+  }
+
+  .app-footer {
+    background-color: var(--bg-1);
+    padding: 2rem 0;
+    flex-grow: 1;
+
+    p {
+      text-align: center;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
   }
 </style>

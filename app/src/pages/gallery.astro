@@ -3,41 +3,61 @@ import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout>
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="margin-top-0 text-primary">GALLERY</h2>
-          <hr class="primary" />
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 text-center">
-          <div class="gallery">
-            <!-- highlights img = 360px x 240px -->
-            <img src="./assets/beach.jpg" />
-            <h3>Title</h3>
-            <p class="text-muted">Description</p>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 text-center">
-          <div class="gallery">
-            <img src="https://blog.esrij.com/arcgisblog/wp-content/uploads/2018/10/1-1.png" />
-            <h3>For the world end</h3>
-            <p class="text-muted">Are you ready for new space?</p>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 text-center">
-          <div class="gallery">
-            <!-- <i class="icon-lg ion-ios-star-outline wow fadeIn" data-wow-delay=".3s"></i> -->
-            <img src="https://artna.jp/wp-content/uploads/2019/07/art-of-europe06-680x453.jpg" />
-            <h3>New releace</h3>
-            <p class="text-muted">Enjoy his new theme</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section>
+      <h2>GALLERY</h2>
+      <hr />
+      <ul class="gallery">
+        <li>
+          <img src="https://blog.esrij.com/arcgisblog/wp-content/uploads/2018/10/1-1.png" />
+          <p>
+            <span>For the world end</span>
+            <span>Are you ready for new <a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">space</a>?</span>
+          </p>
+        </li>
+        <li>
+          <img src="https://artna.jp/wp-content/uploads/2019/07/art-of-europe06-680x453.jpg" />
+          <p>
+            <span>New release</span>
+            <span>Enjoy his new theme</span>
+          </p>
+        </li>
+      </ul>
+    </section>
+  </main>
 </Layout>
+
+<style lang="scss">
+  .gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 21rem;
+    gap: 0.5rem;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      flex: 1 0;
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        text-align: center;
+
+        span {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        .text-muted {
+          color: var(--text-muted);
+        }
+      }
+    }
+  }
+</style>

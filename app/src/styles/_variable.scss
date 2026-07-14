@@ -1,0 +1,54 @@
+@use 'sass:color';
+@use 'sass:map';
+
+// サイズ定数
+$size: (
+  border-radius: 6px,
+  app-footer-height: 71px,
+  app-header-height: 63px,
+  main-max-width: 769px,
+  main-min-width: 320px
+);
+
+@mixin spread-size-vars() {
+  @each $key, $value in $size {
+    --#{$key}: #{$value};
+  }
+}
+
+// カラーコード定数
+$base-color-lt-bg: #ffffff;
+$base-color-dk-bg: #000000;
+$base-color-lt-text: #1c1c1c;
+$base-color-dk-text: #ffffff;
+$themes: (
+  light: (
+    bg-0: $base-color-lt-bg,
+		bg-1: color.scale($base-color-lt-bg, $lightness: -10%),
+		bg-2: color.scale($base-color-lt-bg, $lightness: -20%),
+		bg-3: color.scale($base-color-lt-bg, $lightness: -30%),
+    text: $base-color-lt-text,
+		text-light: color.scale($base-color-lt-text, $lightness: 60%),
+		border: rgba(0, 0, 0, 0.3),
+		shadow: rgba(0, 0, 0, 0.3),
+    accent: #9C27B0
+  ),
+  dark: (
+    bg-0: $base-color-dk-bg,
+		bg-1: color.scale($base-color-dk-bg, $lightness: 10%),
+		bg-2: color.scale($base-color-dk-bg, $lightness: 20%),
+		bg-3: color.scale($base-color-dk-bg, $lightness: 30%),
+    text: $base-color-dk-text,
+		text-light: color.scale($base-color-dk-text, $lightness: -60%),
+		border: rgba(255, 255, 255, 0.3),
+		shadow: rgba(255, 255, 255, 0.3),
+    accent: #9C27B0
+  )
+);
+
+@mixin spread-theme-vars($theme-name) {
+  $theme-map: map.get($themes, $theme-name);
+  @each $key, $value in $theme-map {
+    --#{$key}: #{$value};
+  }
+}

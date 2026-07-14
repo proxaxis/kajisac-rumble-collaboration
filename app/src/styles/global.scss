@@ -1,0 +1,130 @@
+@use 'sass:color';
+@use '_variable.scss' as var;
+
+@import url('http://fonts.googleapis.com/css?family=Dancing+Script:700');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap'); // 'Noto Sans JP'
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap'); // 'Kosugi Maru'
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono'); // 'Ubuntu Mono'
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho'); // 'Sawarabi Mincho'
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c'); // 'M PLUS Rounded 1c'
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p'); // 'M PLUS 1p'
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic'); // 'Sawarabi Gothic'
+@import url('https://fonts.googleapis.com/css?family=Kosugi'); // 'Kosugi'
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP'); // 'Noto Serif JP'
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP'); // 'Noto Sans JP'
+
+:root {
+  color-scheme: light dark;
+  @include var.spread-theme-vars(light);
+  @include var.spread-size-vars();
+}
+
+[data-theme='dark'] {
+  @include var.spread-theme-vars(dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  zoom: 1;
+}
+
+body {
+  background-color: var(--bg-0);
+  color: var(--text);
+  width: 100%;
+  min-height: 100vh;
+  interpolate-size: allow-keywords;
+  overscroll-behavior-x: none !important;
+}
+
+main {
+  margin: 0 auto;
+  max-width: var(--main-max-width);
+  min-width: var(--main-min-width);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+li,
+span {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  font-size: 1.7rem;
+  color: var(--accent);
+  margin-top: 2rem;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  &,
+  &:hover,
+  &:active {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+  }
+}
+
+a,
+a:active,
+a:visited {
+  color: var(--text);
+  text-decoration: none;
+}
+
+input,
+select,
+textarea {
+  background-color: var(--bg-3);
+  color: var(--text);
+  outline: 0;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+
+  &:focus {
+    border-color: var(--primary);
+    outline: none;
+  }
+}
+
+select {
+  padding: 0.4rem 0.3rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1rem 0;
+}
+
+.icons {
+  fill: var(--text);
+}
